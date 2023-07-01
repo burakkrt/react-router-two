@@ -6,16 +6,25 @@ const Context = createContext();
 export const ContextProvider = ({children}) => {
 
     const [games, setGames] = useState({});
+    const [gamesPageCount, setGamesPageCount] = useState(6);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://www.balldontlie.io/api/v1/games')
+        fetch(`https://www.balldontlie.io/api/v1/games?per_page=${gamesPageCount}`)
             .then(res => res.json())
-            .then(res => setGames(res))
+            .then(res => {
+                setIsLoading(load => !load);
+                setGames(res)
+            })
             .catch(err => console.log(err))
     }, [])
 
     const data = {
         games,
+        isLoading,
+        setIsLoading,
+        gamesPageCount,
+        setGamesPageCount
     }
 
     return (

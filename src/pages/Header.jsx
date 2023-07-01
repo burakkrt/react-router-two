@@ -1,14 +1,20 @@
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 export default function Header() {
 
     return (
         <header className="bg-slate-800 text-slate-100 p-5">
-            <nav className="flex flex-row items-center">
-                <div className="w-64">
-                    <h1 className="text-5xl font-bold tracking-widest text-yellow-400">LOGO</h1>
+            <nav className="flex flex-row items-center justify-start">
+                <div className="grow-[1]">
+                    <div className="flex items-center gap-8">
+                        <img
+                            src="/assets/img/nba-logo.png" alt="nba logo" style={{width: "74px"}}/>
+                        <Link to="/"><h1
+                            className="text-5xl font-bold tracking-widest text-yellow-400 uppercase">Basketbal
+                        </h1></Link>
+                    </div>
                 </div>
-                <div className="flex-1">
+                <div className="grow-[4]">
                     <ul className="flex flex-row gap-5 text-xl">
                         <NavLink to="/" className="navlink hover:text-yellow-400 duration-150">
                             <li>Home</li>

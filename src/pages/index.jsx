@@ -7,7 +7,7 @@ export default function MainLayout() {
     return (
         <div className="container mx-auto  shadow-xl">
             <Header/>
-            <div className="hMinScreen p-5">
+            <div className="hMinScreen p-5 relative">
                 <Outlet/>
             </div>
             <Footer/>

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .hMinScreen {
-    min-height: calc(100dvh - 88px - 64px)
+    min-height: calc(100dvh - 123px - 64px)
 }
 
 .hScreen {
-    height: calc(100dvh - 88px - 64px)
+    height: calc(100dvh - 123px - 64px)
 }
 
 .navlink.active {

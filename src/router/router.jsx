@@ -3,8 +3,9 @@ import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../pages/index.jsx";
 import Main from "../pages/Main.jsx";
 import Error404 from "../pages/Error404.jsx";
-import Games from "../pages/Games.jsx";
+import GamesLayout from "../pages/games/index.jsx";
 import Players from "../pages/Players.jsx";
+import Games from "../pages/Games.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'games',
-                element: <Games/>
+                element: <GamesLayout/>,
+                children: [
+                    {
+                        index: true,
+                        element: <Games/>
+                    },
+                ]
             },
             {
                 path: 'players',
