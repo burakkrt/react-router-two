@@ -1,28 +1,29 @@
 import SkeletonGameMatch from "../components/SkeletonGameMatch.jsx";
 import {getContext} from "../context/ContextProvider.jsx";
 import {useSearchParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect, memo} from "react";
 
-export default function Games() {
+function Games() {
 
     const {
-        games, isLoading, gamesPageCount, setGamesPageCount
+        games, isLoading, gamesPageCount, setGamesPageCount, currentPage, setCurrentPage
     } = getContext();
 
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        setGamesPageCount(searchParams.get('per_count') || gamesPageCount);
-    }, [])
+        setSearchParams({per_count: gamesPageCount.toString(), page: currentPage.toString()});
+    }, [gamesPageCount, currentPage])
 
     useEffect(() => {
-        searchParams.set('per_count', gamesPageCount.toString())
-        setSearchParams(Object.fromEntries([...searchParams]))
-        // console.log(Object.fromEntries([...searchParams]).per_count)
-    }, [gamesPageCount])
-
-    console.log("games page rerender")
-
+        if (searchParams.get('per_count') && searchParams.get('per_count') !== gamesPageCount.toString()) {
+            setGamesPageCount(+searchParams.get('per_count'))
+        }
+        if (searchParams.get('page') && searchParams.get('page') !== currentPage.toString()) {
+            setCurrentPage(+searchParams.get('page'))
+        }
+    }, [])
+    
 
     if (isLoading) return <SkeletonGameMatch cards={gamesPageCount}/>
     else return (
@@ -67,3 +68,5 @@ export default function Games() {
         </div>
     );
 }
+
+export default memo(Games)
