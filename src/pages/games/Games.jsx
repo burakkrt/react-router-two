@@ -23,6 +23,7 @@ function Games() {
         if (searchParams.get('page') && searchParams.get('page') !== currentPage.toString()) {
             setCurrentPage(+searchParams.get('page'))
         }
+
     }, [])
 
 

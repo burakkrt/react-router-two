@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import Select from 'react-select'
 import {getContext} from "../../context/ContextProvider.jsx";
+import {useEffect} from "react";
 
 const options = [
     {value: 6, label: '6'},
@@ -28,13 +29,20 @@ export default function PlayersLayout() {
         if (players.meta.total_pages > playersCurrentPage) setPlayersCurrentPage(prevCurrentPage => prevCurrentPage + 1);
     }
 
-    window.addEventListener('scroll', () => {
+    function filterScrollHandler() {
         if (window.scrollY >= 170) {
             document.querySelector('#filter2').classList.add('bg-slate-800', 'p-5', 'text-slate-100', 'border-b-4')
         } else if (document.querySelector('#filter2').getAttribute('class').includes('bg-slate-800')) {
             document.querySelector('#filter2').classList.remove('bg-slate-800', 'p-5', 'text-slate-100', 'border-b-4')
         }
-    })
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', filterScrollHandler)
+        return () => {
+            window.removeEventListener('scroll', filterScrollHandler);
+        }
+    }, [])
 
     if (window.scrollY > 200) {
         window.scrollTo(0, 0)

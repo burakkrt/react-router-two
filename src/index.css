@@ -14,15 +14,33 @@ html {
     height: calc(100dvh - 123px - 64px)
 }
 
+.hVideoScreen {
+    height: calc(100dvh - 123px - 64px - 40px)
+}
+
 .navlink.active {
     color: #facc15;
 }
 
 .LazyLoad {
-    opacity: 0.8;
+    opacity: 0.1;
     transition: all 500ms ease-in-out;
 }
 
 .is-visible {
     opacity: 1;
+}
+
+table, tr, th, td {
+    border: 1px solid white;
+}
+
+
+th {
+    padding: 0.5rem 0.5rem;
+    font-size: 1.1rem;
+}
+
+td {
+    text-align: center;
 }

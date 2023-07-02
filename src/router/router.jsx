@@ -9,6 +9,7 @@ import PrivateAdmin from "../auth/PrivateAdmin.jsx";
 import {createBrowserRouter} from "react-router-dom";
 import PlayersLayout from "../pages/players/index.jsx";
 import Players from "../pages/players/Players.jsx";
+import AdminPage from "../pages/admin/AdminPage.jsx";
 
 const router = [
     {
@@ -41,6 +42,11 @@ const router = [
                         element: <Players/>
                     }
                 ]
+            },
+            {
+                path: 'admin',
+                element: <AdminPage/>,
+                authAdmin: true
             }
         ]
     }

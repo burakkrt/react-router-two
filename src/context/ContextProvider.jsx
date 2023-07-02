@@ -7,7 +7,7 @@ export const ContextProvider = ({children}) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [auth, setAuth] = useState(true);
-    const [authAdmin, setAuthAdmin] = useState(true)
+    const [authAdmin, setAuthAdmin] = useState(false)
 
     // Games
     const [games, setGames] = useState({});

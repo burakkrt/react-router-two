@@ -25,6 +25,9 @@ export default function Header() {
                         <NavLink to="/players" className="navlink hover:text-yellow-400 duration-150">
                             <li>Players</li>
                         </NavLink>
+                        <NavLink to="/admin" className="navlink hover:text-yellow-400 duration-150">
+                            <li>Admin Dasboard</li>
+                        </NavLink>
                     </ul>
                 </div>
             </nav>
