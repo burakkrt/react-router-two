@@ -2,7 +2,7 @@ export default function Players() {
 
     return (
         <div>
-            Players page
+            players page
         </div>
     );
 }

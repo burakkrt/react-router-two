@@ -3,11 +3,12 @@ import MainLayout from "../pages/index.jsx";
 import Welcome from "../pages/Welcome.jsx";
 import Error404 from "../pages/Error404.jsx";
 import GamesLayout from "../pages/games/index.jsx";
-import Players from "../pages/Players.jsx";
-import Games from "../pages/Games.jsx";
+import Games from "../pages/games/Games.jsx";
 import PrivateUser from "../auth/PrivateUser.jsx";
 import PrivateAdmin from "../auth/PrivateAdmin.jsx";
 import {createBrowserRouter} from "react-router-dom";
+import PlayersLayout from "../pages/players/index.jsx";
+import Players from "../pages/players/Players.jsx";
 
 const router = [
     {
@@ -32,8 +33,14 @@ const router = [
             },
             {
                 path: 'players',
-                element: <Players/>,
-                authUser: true
+                element: <PlayersLayout/>,
+                authUser: true,
+                children: [
+                    {
+                        index: true,
+                        element: <Players/>
+                    }
+                ]
             }
         ]
     }

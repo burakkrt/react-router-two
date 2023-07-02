@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 .hMinScreen {
     min-height: calc(100dvh - 123px - 64px)
 }
@@ -12,4 +16,13 @@
 
 .navlink.active {
     color: #facc15;
+}
+
+.LazyLoad {
+    opacity: 0.8;
+    transition: all 500ms ease-in-out;
+}
+
+.is-visible {
+    opacity: 1;
 }
